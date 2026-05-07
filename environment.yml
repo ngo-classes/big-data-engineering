@@ -1,0 +1,11 @@
+name: pyspark-3.5.1
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11         # Highly stable with Spark 3.5.1
+  - openjdk=17          # Latest recommended LTS for Spark
+  - pyspark=3.5.1       # Latest stable maintenance release
+  - pyarrow>=11.0.0     # Recommended for high-performance data transfer
+  - pandas>=2.0.0       # Supported by recent Spark versions
+  - findspark
