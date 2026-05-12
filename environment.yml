@@ -9,3 +9,5 @@ dependencies:
   - pyarrow>=11.0.0     # Recommended for high-performance data transfer
   - pandas>=2.0.0       # Supported by recent Spark versions
   - findspark
+  - ipykernel>=6.29.0   # Required for Jupyter Notebook integration
+  - pip
