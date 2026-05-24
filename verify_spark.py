@@ -16,7 +16,7 @@ def check_setup():
 
     # 3. Initialize Spark and Check Version
     try:
-        spark = SparkSession.builder.appName("VersionCheck").getOrCreate()
+        spark = SparkSession.builder.appName("VersionCheck").master("local[*]").getOrCreate()
         print(f"Spark Version: {spark.version}")
         
         # Test a simple operation

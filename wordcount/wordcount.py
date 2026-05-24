@@ -1,6 +1,4 @@
 import sys
-import os
-import subprocess
 from pyspark.sql import SparkSession
 
 def wordcount(input_path: str, output_path: str):
