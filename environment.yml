@@ -9,6 +9,7 @@ dependencies:
   - pandas>=2.0.0       # Supported by recent Spark versions
   - findspark
   - ipykernel>=6.29.0   # Required for Jupyter Notebook integration
+  - pip
   - pip:
     - pyspark==3.5.1       # Latest stable maintenance release
     - jupyterlab         # Optional: For interactive development
