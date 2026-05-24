@@ -10,7 +10,7 @@ dependencies:
   - findspark
   - ipykernel>=6.29.0   # Required for Jupyter Notebook integration
   - pip:
-    - pyspark=3.5.1       # Latest stable maintenance release
+    - pyspark==3.5.1       # Latest stable maintenance release
     - jupyterlab         # Optional: For interactive development
     - matplotlib        # Optional: For data visualization
     - seaborn           # Optional: For enhanced data visualization
