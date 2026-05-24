@@ -1,31 +1,28 @@
-import sys
 import os
-import subprocess
+import sys
+import pathlib
+import platform
+import importlib.util
+
+
+#### Verify Spark can start and run a simple operation
+
 from pyspark.sql import SparkSession
 
-def check_setup():
-    # 1. Check Python Version
-    print(f"Python Version: {sys.version.split()[0]}")
+try:
+    builder = (
+        SparkSession.builder
+        .appName("VersionCheck")
+        .master("local[*]")
+    )
 
-    # 2. Check Java Version
-    try:
-        java_version = subprocess.check_output(['java', '-version'], stderr=subprocess.STDOUT).decode()
-        print(f"Java Version Info:\n{java_version.strip()}")
-    except Exception as e:
-        print("Java not found in PATH.")
+    spark = builder.getOrCreate()
+    spark.sparkContext.setLogLevel("ERROR")
+    print(f"Spark Version: {spark.version}")
 
-    # 3. Initialize Spark and Check Version
-    try:
-        spark = SparkSession.builder.appName("VersionCheck").master("local[*]").getOrCreate()
-        print(f"Spark Version: {spark.version}")
-        
-        # Test a simple operation
-        df = spark.createDataFrame([{"test": "Success"}])
-        df.show()
-        
-        spark.stop()
-    except Exception as e:
-        print(f"Spark failed to start: {e}")
-
-if __name__ == "__main__":
-    check_setup()
+    # Test a simple operation
+    df = spark.createDataFrame([{"test": "Success"}])
+    df.show()
+    spark.stop()
+except Exception as e:
+    print(f"Spark failed to start: {e}")
